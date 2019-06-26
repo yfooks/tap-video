@@ -1,3 +1,16 @@
-<p>
-  videos works!
-</p>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxLayoutAlign="center center">
+    <app-master-config (settingsChanged)="onMasterSettingsUpdated($event)"></app-master-config>
+  </div>
+  <div fxHide.lt-md>
+    <button mat-raised-button color="accent" (click)="openAddVideoDialog()">
+      + Add Video
+    </button>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="1rem">
+  <div *ngFor="let video of videos">
+    <app-video-container [video]="video"></app-video-container>
+  </div>
+</div>

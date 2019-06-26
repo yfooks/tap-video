@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Video} from '../models';
+import {VideosService} from './videos.service';
+import {MatDialog} from '@angular/material';
+import {AddVideoDialogComponent} from './add-video-dialog/add-video-dialog.component';
 
 @Component({
   selector: 'app-videos',
@@ -7,9 +11,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VideosComponent implements OnInit {
 
-  constructor() { }
+  videos: Video[] = [];
+  masterHeight = 300;
+  masterWidth = 300;
+
+
+  constructor(private videosService: VideosService,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.videos = this.videosService.getVideos();
   }
 
+  onMasterSettingsUpdated(ev: any){
+    if (ev.prop === 'width') {
+      this.masterWidth = ev.value;
+    } else {
+      this.masterHeight = ev.value;
+    }
+  }
+
+  openAddVideoDialog(): void {
+    const dialogRef = this.dialog.open(AddVideoDialogComponent, {
+      width: '250px',
+      data: {url: ''}
+    });
+
+    dialogRef.afterClosed().subscribe(url => {
+      if (url) {
+        this.videosService.addVideo(url, this.masterHeight, this.masterWidth);
+      }
+    });
+  }
 }
