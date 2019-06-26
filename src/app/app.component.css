@@ -1,0 +1,25 @@
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 15rem;
+}
+
+@media only screen and (max-width: 1280px) {
+  main {
+    width: 95%;
+    margin: 1rem auto;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  main {
+    width: 80%;
+    margin: 1rem auto;
+  }
+}
+
+.white-background {
+  background-color: white;
+}
