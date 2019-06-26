@@ -3,10 +3,15 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
 
 ## To run it in localhost
+
 1) Clone repository lo local machine (ubuntu)
+
 2) Open terminal in project folder and run "sudo npm install" (node should be pre-installed on machine)
+
 3) In terminal run "ng serve"
+
 4) In chrome browse http://localhost:4200/
+
 
 ## Code scaffolding
 
