@@ -1,0 +1,17 @@
+
+
+<div fxLayoutAlign="center center">
+    <h1 class="mat-h1 margin-right-1" fxLayoutAlign="center center">Video size - master settings:</h1>
+    <form class="form" [formGroup]="settingsForm">
+
+      <label class="margin-right-1">Width (pixels) *</label>
+      <mat-form-field floatLabel="never">
+        <input type="text" formControlName="width" matInput placeholder="Width" autocomplete="off">
+      </mat-form-field>
+
+      <label class="margin-right-1">Height (pixels) *</label>
+      <mat-form-field floatLabel="never">
+        <input type="email" formControlName="height" matInput placeholder="Height" autocomplete="off">
+      </mat-form-field>
+    </form>
+</div>

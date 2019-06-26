@@ -1,0 +1,11 @@
+<h1 mat-dialog-title> Add new video</h1>
+<mat-dialog-content>
+  <p>YouTube embedded link</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.url">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button [mat-dialog-close]="data.url">Add</button>
+  <button mat-raised-button [mat-dialog-close]="false">Cancel</button>
+</mat-dialog-actions>

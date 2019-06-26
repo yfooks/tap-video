@@ -1,0 +1,22 @@
+<!--<div class="video-container" [ngStyle]="{'width': video.width + 'px', 'height': video.height + 'px'}">-->
+<div class="video-container" [ngStyle]="{'width': masterWidth + 'px', 'height': masterHeight + 'px'}">
+  <div class="id">
+    Video id {{video.id}}
+  </div>
+
+  <div class="size">
+    width: {{video.width}}
+  </div>
+
+  <div class="size">
+    height: {{video.height}}
+  </div>
+  <div class="size">
+    url: {{video.url}}
+  </div>
+<hr>
+  <div fxLayoutAlign="center center">
+    <iframe width="{{masterWidth/2}}" height="{{masterHeight/2}}" [src]="url" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+</div>
