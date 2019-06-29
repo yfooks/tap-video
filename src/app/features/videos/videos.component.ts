@@ -31,6 +31,10 @@ export class VideosComponent implements OnInit {
     }
   }
 
+  onSizeChanged(ev: any) {
+    this.videosService.editVideoSize(ev.id, ev.prop,  ev.value);
+  }
+
   openAddVideoDialog(): void {
     const dialogRef = this.dialog.open(AddVideoDialogComponent, {
       width: '250px',
@@ -43,4 +47,6 @@ export class VideosComponent implements OnInit {
       }
     });
   }
+
+
 }
