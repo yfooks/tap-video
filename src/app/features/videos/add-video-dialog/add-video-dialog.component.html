@@ -1,11 +1,18 @@
 <h1 mat-dialog-title> Add new video</h1>
 <mat-dialog-content>
-  <p>YouTube embedded link</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.url">
-  </mat-form-field>
+  <form class="form" [formGroup]="urlForm">
+
+    <label class="margin-right-1">Video url:</label>
+    <mat-form-field floatLabel="never">
+      <input type="url" formControlName="url" matInput placeholder="video url (https://...)" autocomplete="off">
+    </mat-form-field>
+      <mat-error *ngIf="!urlForm.get('url').valid && urlForm.get('url').touched">
+        Invalid url
+      </mat-error>
+  </form>
+
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-raised-button [mat-dialog-close]="data.url">Add</button>
+  <button mat-raised-button [mat-dialog-close]="data.url" [disabled]="!urlForm.valid">Add</button>
   <button mat-raised-button [mat-dialog-close]="false">Cancel</button>
 </mat-dialog-actions>
