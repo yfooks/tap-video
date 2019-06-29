@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 
 import * as _ from 'lodash';
 import {Video} from '../models';
+import {BehaviorSubject, Subject} from 'rxjs';
 
 
 @Injectable({providedIn: 'root'})
@@ -12,6 +13,9 @@ export class VideosService {
     {id: 2, width: 300, height: 300, url: 'https://www.youtube.com/watch?v=vIOn7F6o7NA'},
     {id: 3, width: 300, height: 300, url: 'https://www.youtube.com/watch?v=vIOn7F6o7NA'},
   ];
+
+  private masterWidthListener = new BehaviorSubject<number>(300);
+  private masterHeightListener = new BehaviorSubject<number>(300);
 
   constructor() {
   }
@@ -29,6 +33,24 @@ export class VideosService {
     const videoIndex = _.findIndex(this.videos, {id: id});
     if (videoIndex > -1) {
       this.videos[videoIndex][prop] = value;
+      this.videos[videoIndex].isSizeOverride = true;
     }
   }
+
+  getMasterWidthListener() {
+    return this.masterWidthListener.asObservable();
+  }
+
+  getMasterHeightListener() {
+    return this.masterHeightListener.asObservable();
+  }
+
+  updateMasterSettings(ev: any) {
+    if (ev.prop === 'width') {
+      this.masterWidthListener.next(ev.value);
+    } else {
+      this.masterHeightListener.next(ev.value);
+    }
+  }
+
 }

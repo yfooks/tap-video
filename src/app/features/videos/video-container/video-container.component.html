@@ -1,5 +1,6 @@
 <!--<div class="video-container" [ngStyle]="{'width': video.width + 'px', 'height': video.height + 'px'}">-->
-<div class="video-container" [ngStyle]="{'width': video.width + 'px', 'height': video.height + 'px'}">
+<div class="video-container"
+     [ngStyle]="{'height': getSize('height'), 'width': getSize('width')}">
   <div class="id">
     Video id: {{video.id}}
   </div>

@@ -12,7 +12,6 @@
 </h1>
 <div  fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="1rem">
   <div *ngFor="let video of videos">
-    <app-video-container [video]="video" [masterHeight]="masterHeight" [masterWidth]="masterWidth"
-    (videoSizeChanged)="onSizeChanged($event)"></app-video-container>
+    <app-video-container [video]="video" (videoSizeChanged)="onSizeChanged($event)"></app-video-container>
   </div>
 </div>

@@ -3,4 +3,5 @@ export interface Video {
   width: number;
   height: number;
   url: string;
+  isSizeOverride?: boolean;
 }

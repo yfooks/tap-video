@@ -24,11 +24,7 @@ export class VideosComponent implements OnInit {
   }
 
   onMasterSettingsUpdated(ev: any){
-    if (ev.prop === 'width') {
-      this.masterWidth = ev.value;
-    } else {
-      this.masterHeight = ev.value;
-    }
+    this.videosService.updateMasterSettings(ev);
   }
 
   onSizeChanged(ev: any) {
