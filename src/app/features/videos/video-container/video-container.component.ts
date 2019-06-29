@@ -40,7 +40,6 @@ export class VideoContainerComponent implements OnInit, OnDestroy {
 
     this.masterWidthSub = this.videosService.getMasterWidthListener().subscribe(
       (res) => {
-        debugger
         this.masterWidth = res;
       }
     );
