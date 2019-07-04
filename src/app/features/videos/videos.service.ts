@@ -16,17 +16,20 @@ export class VideosService {
 
   private masterWidthListener = new BehaviorSubject<number>(300);
   private masterHeightListener = new BehaviorSubject<number>(300);
+  private videosListener = new BehaviorSubject<Video[]>(this.videos);
 
   constructor() {
   }
 
-  getVideos() {
-    return this.videos;
+  getVideosListener() {
+    return this.videosListener.asObservable();
   }
 
   addVideo(url: string, masterHeight: number, masterWidth: number) {
     const maxId = Math.max(...this.videos.map(o => o.id), 0) + 1;
-    this.videos.push({id: maxId, height: masterHeight, width: masterWidth, url: url});
+    const newVideo: Video = {id: maxId, height: masterHeight, width: masterWidth, url: url};
+    this.videos.push(newVideo);
+    this.videosListener.next([...this.videos]);
   }
 
   editVideoSize(id: number, prop: string, value: number) {
@@ -34,6 +37,7 @@ export class VideosService {
     if (videoIndex > -1) {
       this.videos[videoIndex][prop] = value;
       this.videos[videoIndex].isSizeOverride = true;
+      this.videosListener.next([...this.videos]);
     }
   }
 

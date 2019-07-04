@@ -3,6 +3,7 @@ import {Video} from '../models';
 import {VideosService} from './videos.service';
 import {MatDialog} from '@angular/material';
 import {AddVideoDialogComponent} from './add-video-dialog/add-video-dialog.component';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-videos',
@@ -14,13 +15,17 @@ export class VideosComponent implements OnInit {
   videos: Video[] = [];
   masterHeight = 300;
   masterWidth = 300;
-
+  videosSub: Subscription;
 
   constructor(private videosService: VideosService,
               public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.videos = this.videosService.getVideos();
+    this.videosSub = this.videosService.getVideosListener().subscribe(
+      (res: Video[]) => {
+        this.videos = res;
+      }
+    );
   }
 
   onMasterSettingsUpdated(ev: any){
