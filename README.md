@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
 
+Run in stackblitz by: https://stackblitz.com/github/yfooks/tap-video
+
 ## To run it in localhost
 
 1) Clone repository lo local machine (ubuntu)
